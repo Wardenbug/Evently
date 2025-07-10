@@ -6,11 +6,14 @@ using Evently.Common.Infrastructure;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
-builder.Services.AddEventsModule(builder.Configuration);
 
 builder.Services.AddApplication([Evently.Modules.Events.Application.AssemblyReference.Assembly]);
 builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("Database")!);
+
+builder.Configuration.AddModuleConfiguration(["events"]);
+builder.Services.AddEventsModule(builder.Configuration);
 
 WebApplication app = builder.Build();
 
