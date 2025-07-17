@@ -7,6 +7,7 @@ using Serilog;
 using Evently.Api.Middleware;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Evently.Common.Presentation.Endpoints;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -49,10 +50,10 @@ if (app.Environment.IsDevelopment())
 
 app.MapHealthChecks("health", new HealthCheckOptions
 {
-     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
 
-EventsModule.MapEndpoints(app);
+app.MapEndpoints();
 
 app.UseSerilogRequestLogging();
 
