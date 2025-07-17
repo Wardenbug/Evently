@@ -30,6 +30,7 @@ builder.Services.AddApplication([
     Evently.Modules.Ticketing.Application.AssemblyReference.Assembly,
 ]);
 builder.Services.AddInfrastructure(
+    [TicketingModule.ConfigureConsumers],
     databaseConnectionString,
     redisConnectionString
     );
