@@ -6,6 +6,7 @@
     <ProjectReference Include="..\Evently.Modules.Users.Application\Evently.Modules.Users.Application.csproj" />
     <ProjectReference Include="..\Evently.Modules.Users.Domain\Evently.Modules.Users.Domain.csproj" />
     <ProjectReference Include="..\Evently.Modules.Users.Presentation\Evently.Modules.Users.Presentation.csproj" />
+    <ProjectReference Include="..\Eventy.Modules.Users.PublicApi\Evently.Modules.Users.PublicApi.csproj" />
   </ItemGroup>
 
 </Project>
