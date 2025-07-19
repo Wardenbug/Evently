@@ -485,3 +485,6 @@ $RECYCLE.BIN/
 
 .containers
 .containers/
+
+.files/
+.files
