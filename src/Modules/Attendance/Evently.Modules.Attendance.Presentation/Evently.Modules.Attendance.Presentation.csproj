@@ -2,7 +2,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Evently.Common.Presentation\Evently.Common.Presentation.csproj" />
+    <ProjectReference Include="..\..\Events\Events.Modules.Events.IntegrationEvents\Evently.Modules.Events.IntegrationEvents.csproj" />
+    <ProjectReference Include="..\..\Ticketing\Evently.Modules.Ticketing.IntegrationEvents\Evently.Modules.Ticketing.IntegrationEvents.csproj" />
+    <ProjectReference Include="..\..\Users\Evently.Modules.Users.IntegrationEvents\Evently.Modules.Users.IntegrationEvents.csproj" />
     <ProjectReference Include="..\Evently.Modules.Attendance.Application\Evently.Modules.Attendance.Application.csproj" />
+    <ProjectReference Include="..\Evently.Modules.Attendance.IntegrationEvents\Evently.Modules.Attendance.IntegrationEvents.csproj" />
   </ItemGroup>
 
 </Project>

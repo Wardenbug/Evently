@@ -1,4 +1,5 @@
 ﻿namespace Evently.Modules.Users.Domain.Users;
+
 public sealed class Role
 {
     public static readonly Role Administrator = new("Administrator");
@@ -9,7 +10,9 @@ public sealed class Role
         Name = name;
     }
 
-    private Role() { }
+    private Role()
+    {
+    }
 
     public string Name { get; private set; }
 }

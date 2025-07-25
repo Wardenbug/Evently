@@ -1,6 +1,6 @@
 ﻿using Evently.Common.Domain;
-using Evently.Common.Presentation.Endpoints;
 using Evently.Common.Presentation.ApiResults;
+using Evently.Common.Presentation.Endpoints;
 using Evently.Modules.Attendance.Application.Abstractions.Authentication;
 using Evently.Modules.Attendance.Application.Attendees.CheckInAttendee;
 using MediatR;

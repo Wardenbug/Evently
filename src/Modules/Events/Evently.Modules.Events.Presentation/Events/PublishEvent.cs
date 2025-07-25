@@ -1,6 +1,6 @@
 ﻿using Evently.Common.Domain;
-using Evently.Common.Presentation.ApiResults;
 using Evently.Common.Presentation.Endpoints;
+using Evently.Common.Presentation.ApiResults;
 using Evently.Modules.Events.Application.Events.PublishEvent;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -19,6 +19,7 @@ internal sealed class PublishEvent : IEndpoint
 
             return result.Match(Results.NoContent, ApiResults.Problem);
         })
+        .RequireAuthorization(Permissions.ModifyEvents)
         .WithTags(Tags.Events);
     }
 }
