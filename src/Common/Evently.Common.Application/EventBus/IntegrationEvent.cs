@@ -5,9 +5,9 @@ public abstract class IntegrationEvent : IIntegrationEvent
     protected IntegrationEvent(Guid id, DateTime occuredOnUtc)
     {
         Id = id;
-        OccuredOnUtc = occuredOnUtc;
+        OccurredOnUtc = occuredOnUtc;
     }
 
     public Guid Id { get; init; }
-    public DateTime OccuredOnUtc { get; init; }
+    public DateTime OccurredOnUtc { get; init; }
 }
