@@ -7,15 +7,13 @@ using Evently.Common.Application.Messaging;
 using Evently.Common.Domain;
 using Evently.Common.Infrastructure.Outbox;
 using Evently.Common.Infrastructure.Serialization;
-using MassTransit.Configuration;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace Evently.Modules.Users.Infrastructure.Outbox;
+namespace Evently.Modules.Attendance.Infrastructure.Outbox;
 
 [DisallowConcurrentExecution]
 internal sealed class ProcessOutboxJob(
@@ -25,7 +23,7 @@ internal sealed class ProcessOutboxJob(
     IOptions<OutboxOptions> outboxOptions,
     ILogger<ProcessOutboxJob> logger) : IJob
 {
-    private const string ModuleName = "Users";
+    private const string ModuleName = "Attendance";
     public async Task Execute(IJobExecutionContext context)
     {
         // 1. Get unprocessed messages
@@ -52,7 +50,7 @@ internal sealed class ProcessOutboxJob(
                 IEnumerable<IDomainEventHandler> domainEventHandlers = DomainEventHandlersFactory.GetHandlers(
                     domainEvent.GetType(),
                     scope.ServiceProvider,
-                    Application.AssemblyReference.Assembly);
+                    Attendance.Application.AssemblyReference.Assembly);
 
                 foreach (IDomainEventHandler dominEventHandler in domainEventHandlers)
                 {
@@ -89,7 +87,7 @@ internal sealed class ProcessOutboxJob(
             SELECT
                 id as {nameof(OutboxMessageResponse.Id)},
                 content as {nameof(OutboxMessageResponse.Content)}
-            FROM users.outbox_messages
+            FROM attendance.outbox_messages
             WHERE processed_on_utc IS NULL
             ORDER BY occurrent_on_utc
             LIMIT {outboxOptions.Value.BatchSize}
@@ -111,7 +109,7 @@ internal sealed class ProcessOutboxJob(
     {
         const string sql =
             """
-            UPDATE users.outbox_messages
+            UPDATE attendance.outbox_messages
             SET processed_on_utc = @ProcessedOnUtc,
                 error = @Error
             WHERE id = @Id
