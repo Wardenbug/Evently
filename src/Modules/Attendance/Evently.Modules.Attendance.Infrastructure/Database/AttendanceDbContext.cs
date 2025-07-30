@@ -19,6 +19,8 @@ public sealed class AttendanceDbContext(DbContextOptions<AttendanceDbContext> op
     internal DbSet<Event> Events { get; set; }
 
     internal DbSet<Ticket> Tickets { get; set; }
+    internal DbSet<EventStatistics> EventStatistics { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -31,5 +33,6 @@ public sealed class AttendanceDbContext(DbContextOptions<AttendanceDbContext> op
         modelBuilder.ApplyConfiguration(new AttendeeConfiguration());
         modelBuilder.ApplyConfiguration(new EventConfiguration());
         modelBuilder.ApplyConfiguration(new TicketConfiguration());
+        modelBuilder.ApplyConfiguration(new EventStatisticsConfiguration());
     }
 }
