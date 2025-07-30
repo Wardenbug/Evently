@@ -22,9 +22,9 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
         
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore Evently.sln
       
     - name: Build
-      run: dotnet build --configuration Release --no-restore 
+      run: dotnet build  Evently.sln --configuration Release --no-restore 
     - name: Test
-      run: dotnet test --no-build --configuration Release --no-restore
+      run: dotnet test  Evently.sln --no-build --configuration Release --no-restore
